@@ -1,6 +1,6 @@
 {
   "name": "@zanejs/vite-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Out-of-the-box Vite configuration library supporting both application and library project types.",
   "license": "MIT",
   "type": "module",
