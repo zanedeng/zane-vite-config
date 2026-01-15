@@ -1,13 +1,11 @@
 import type { PluginOption } from 'vite';
 
-import {
-  dateUtil,
-  findMonorepoRoot,
-  getPackages,
-  readPackageJSON,
-} from '@vben/node-utils';
+import { readPackageJSON } from 'pkg-types';
 
 import { readWorkspaceManifest } from '@pnpm/workspace.read-manifest';
+import { findMonorepoRoot } from '../utils/findMonorepoRoot';
+import { getPackages } from '../utils/getPackages';
+import { dateUtil } from '../utils/date';
 
 function resolvePackageVersion(
   pkgsMeta: Record<string, string>,
@@ -45,7 +43,7 @@ async function resolveMonorepoDependencies() {
       resultDependencies[key] = resolvePackageVersion(
         pkgsMeta,
         key,
-        value,
+        value as string,
         catalog,
       );
     }
@@ -53,7 +51,7 @@ async function resolveMonorepoDependencies() {
       resultDevDependencies[key] = resolvePackageVersion(
         pkgsMeta,
         key,
-        value,
+        value as string,
         catalog,
       );
     }

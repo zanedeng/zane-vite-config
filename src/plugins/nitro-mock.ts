@@ -1,16 +1,16 @@
 import type { PluginOption } from 'vite';
 
 import type { NitroMockPluginOptions } from '../typing';
-
-import { colors, consola, getPackage } from '@vben/node-utils';
-
+import colors from 'chalk';
 import getPort from 'get-port';
 import { build, createDevServer, createNitro, prepare } from 'nitropack';
+import { getPackage } from '../utils/getPackage';
+import { consola } from 'consola';
 
 const hmrKeyRe = /^runtimeConfig\.|routeRules\./;
 
 export const viteNitroMockPlugin = ({
-  mockServerPackage = '@vben/backend-mock',
+  mockServerPackage = '@zanejs/backend-mock',
   port = 5320,
   verbose = true,
 }: NitroMockPluginOptions = {}): PluginOption => {
